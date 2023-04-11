@@ -23,7 +23,7 @@ class CreateFeedbackAPIView(CreateAPIView):
         existing_feedback = Feedback.objects.filter(user=user_id, service=service_id).exists()
 
         if existing_feedback:
-            raise PermissionDenied("You can only write one feedback per product.")
+            raise PermissionDenied("You have written the feedback")
 
         serializer.save(user=user_id, service=service_id)
 
